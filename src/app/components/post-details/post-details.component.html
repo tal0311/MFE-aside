@@ -21,7 +21,7 @@
             <div *ngFor="let comment of post.comments">
               <p>{{ comment.text }}</p>
               <p>Comment by: {{ comment.owner.username }}</p>
-              <img [src]="comment.owner.imgUrl" alt="User Image" width="50">
+              <img (click)="sendUserForDisplay(comment)" [src]="comment.owner.imgUrl" alt="User Image" width="50" >
               <p>Commented on: {{ comment.createdAt | date:'medium' }}</p>
             </div>
           </div>

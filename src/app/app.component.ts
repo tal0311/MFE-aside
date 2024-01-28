@@ -4,6 +4,7 @@ import { PostDetailsComponent } from './components/post-details/post-details.com
 import { WeatherComponent } from './components/weather/weather.component';
 import { NgIf } from '@angular/common';
 import { postService } from './services/post.service';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +24,7 @@ export class AppComponent implements OnInit {
       this.setPostForDisplay(e.data.payload);
     });
 
-    console.log();
+    console.log(environment);
     
   }
 

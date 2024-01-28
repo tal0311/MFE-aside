@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output, signal } from '@angular/core';
 import { JsonPipe, DatePipe, NgFor, NgIf, CommonModule } from '@angular/common';
 import { IconComponent } from '../icon/icon.component';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-post-details',
@@ -16,5 +17,13 @@ export class PostDetailsComponent {
   resetPost() {
     console.log('resetPost');
     this.closePost.emit(null);
+  }
+  sendUserForDisplay(comment: any) {
+    console.log(environment.MAIN_CONTAINER_URL);
+    
+    window.parent.postMessage(
+      { type: 'display_user', payload: comment.owner },
+      environment.MAIN_CONTAINER_URL
+    );
   }
 }
