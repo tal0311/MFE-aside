@@ -4,8 +4,7 @@
       <button class="reset-btn" (click)="resetPost()">X</button>
         <div class="post">
           <p>{{ post.txt }}</p>
-          <p>Posted by: {{ post.owner.username }}</p>
-          <img [src]="post.owner.imgUrl" alt="User Image" width="50">
+         <app-user-preview [owner]="post.owner"/>
           <p>Posted on: {{ post.createdAt | date:'medium' }}</p>
           <p>Last Updated: {{ post.updatedAt | date:'medium' }}</p>
       
@@ -16,15 +15,17 @@
             </ul>
           </div>
       
-          <div class="comments" *ngIf="post.comments.length">
-            <h3>Comments</h3>
-            <div *ngFor="let comment of post.comments">
-              <p>{{ comment.text }}</p>
-              <p>Comment by: {{ comment.owner.username }}</p>
-              <img (click)="sendUserForDisplay(comment)" [src]="comment.owner.imgUrl" alt="User Image" width="50" >
-              <p>Commented on: {{ comment.createdAt | date:'medium' }}</p>
-            </div>
-          </div>
+
+        
+         <app-comment-list *ngIf="post.comments.length" [comments]="post.comments"/>
+      
+          <!-- <div class="add-comment">
+            <h3>Add Comment</h3>
+            <form (submit)="addComment($event)">
+              <input type="text" placeholder="Comment" [(ngModel)]="comment.txt" name="txt">
+              <button>Add</button>
+            </form>
+          </div> -->
         </div>
       </section>
 

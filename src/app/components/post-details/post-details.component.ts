@@ -2,11 +2,13 @@ import { Component, EventEmitter, Input, Output, signal } from '@angular/core';
 import { JsonPipe, DatePipe, NgFor, NgIf, CommonModule } from '@angular/common';
 import { IconComponent } from '../icon/icon.component';
 import { environment } from '../../../environments/environment';
+import { UserPreviewComponent } from '../user-preview/user-preview.component';
+import { CommentListComponent } from '../comment-list/comment-list.component';
 
 @Component({
   selector: 'app-post-details',
   standalone: true,
-  imports: [JsonPipe, DatePipe, NgFor, NgIf, IconComponent],
+  imports: [JsonPipe, DatePipe, NgFor, NgIf, IconComponent,UserPreviewComponent, CommonModule,CommentListComponent],
   templateUrl: './post-details.component.html',
   styleUrl: './post-details.component.scss',
 })

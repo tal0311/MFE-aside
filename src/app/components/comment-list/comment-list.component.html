@@ -1,0 +1,8 @@
+<section class="comments-list" >
+    <h3>Comments</h3>
+    <div *ngFor="let comment of comments">
+      <p>{{ comment.text }}</p>
+      <app-user-preview [owner]="comment.owner"/>
+       <p>Commented on: {{ comment.createdAt | date:'medium' }}</p>
+    </div>
+  </section>
