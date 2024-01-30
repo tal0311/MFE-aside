@@ -1,9 +1,9 @@
 
 
 <main class="main">
-  <app-post-details *ngIf="postForDisplay_(); else weather" [post]="postForDisplay_()" (closePost)="resetPost()"/>
-  <ng-template #weather>
-    <app-weather/>
+  <app-post-details *ngIf="postForDisplay_(); else weatherSection" [post]="postForDisplay_()" (closePost)="resetPost()"/>
+  <ng-template #weatherSection>
+    <app-weather [weather]="weather_()"/>
   </ng-template> 
 </main>
 

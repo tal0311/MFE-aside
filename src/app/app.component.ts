@@ -6,6 +6,7 @@ import { NgIf } from '@angular/common';
 import { postService } from './services/post.service';
 import { environment } from '../environments/environment';
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -17,17 +18,33 @@ export class AppComponent implements OnInit {
   title = 'aside-fe';
 
   postForDisplay_ = signal<any>(null);
+  weather_ = signal<any>(null);
 
   ngOnInit(): void {
     this.getPostFromLocalStorage();
     window.addEventListener('message', (e) => {
-      this.setPostForDisplay(e.data.payload);
+      if (e.data.type === 'display_post') {
+        this.setPostForDisplay(e.data.payload);
+      }
+
+      if (e.data.type === 'display_weather') {
+      console.log(e.data.payload);
+      // this.weather_.set(e.data.payload);
+      // this.setPostForDisplay(e.data.payload);
+      this.setWeather(e.data.payload);
+      
+      }
     });
 
-    console.log(environment);
+     // const weather = await weatherService.getWeatherByLocation({ lat: 38, lng: 36 });
+   
     
   }
 
+  setWeather(weather: any) {
+    this.weather_.set(weather);
+    postService.saveToLocalStorage('current-weather', this.weather_());
+  }
   setPostForDisplay(post: any) {
     this.postForDisplay_.set(post);
     postService.saveToLocalStorage('current-post', this.postForDisplay_());

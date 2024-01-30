@@ -1,5 +1,20 @@
-<section>
-    <h2>Weather</h2>
-    <p>Weather component</p>
-    <img src="./../../assets/images/sun.svg " alt="">
+<section class="weather-cmp grid grid-center">
+  <article>
+    <h3>{{ weather?.name }}</h3>
+    <p>{{ weather?.temp }}</p>
+    <p>{{ weather?.humidity }}</p>
+    <p>{{ weather?.desc }}</p>
+    <p>{{ weather?.windSpeed }}</p>
+  </article>
+  <img class="display-weather-img" [src]="getWeatherIconUrl()" alt="" />
 </section>
+
+<style>
+  .weather-cmp {
+    height: 100vh;
+  }
+
+  .weather-cmp .display-weather-img {
+    width: 90%;
+  }
+</style>
