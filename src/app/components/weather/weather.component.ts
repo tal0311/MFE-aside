@@ -23,7 +23,7 @@ export class WeatherComponent implements OnInit{
     }
     
     const srcMap ={
-      'light rain': 'https://www.accuweather.com/images/weathericons/7.svg',
+      'light rain': 'https://www.accuweather.com/images/weathericons/12.svg',
       'rain': 'https://www.accuweather.com/images/weathericons/12.svg',
       'heavy rain': 'https://www.accuweather.com/images/weathericons/18.svg',
       'partly sunny': 'https://www.accuweather.com/images/weathericons/3.svg',
@@ -39,7 +39,9 @@ export class WeatherComponent implements OnInit{
       'partly cloudy': 'https://www.accuweather.com/images/weathericons/3.svg',
       'hazy sunshine': 'https://www.accuweather.com/images/weathericons/5.svg',
       'moderate rain': 'https://www.accuweather.com/images/weathericons/12.svg',
-      'showers': 'https://www.accuweather.com/images/weathericons/12.svg',}
+      'showers': 'https://www.accuweather.com/images/weathericons/12.svg',
+      'intermittent clouds': 'https://www.accuweather.com/images/weathericons/4.svg',
+    }
     return srcMap[this.weather.desc.toLowerCase()];
   }
 }

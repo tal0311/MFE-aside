@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-user-preview',
@@ -10,4 +11,9 @@ import { CommonModule } from '@angular/common';
 })
 export class UserPreviewComponent {
 @Input() owner: any | null = null;
+
+ displayUser() {
+  const userClone= JSON.parse( JSON.stringify(this.owner))
+  window.parent.postMessage({ type: 'display_user', payload: userClone },environment.MAIN_CONTAINER_URL);
+}
 }

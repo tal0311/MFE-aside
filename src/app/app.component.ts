@@ -6,7 +6,6 @@ import { NgIf } from '@angular/common';
 import { postService } from './services/post.service';
 import { environment } from '../environments/environment';
 
-
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -28,17 +27,10 @@ export class AppComponent implements OnInit {
       }
 
       if (e.data.type === 'display_weather') {
-      console.log(e.data.payload);
-      // this.weather_.set(e.data.payload);
-      // this.setPostForDisplay(e.data.payload);
-      this.setWeather(e.data.payload);
-      
+        this.setWeather(e.data.payload);
       }
     });
 
-     // const weather = await weatherService.getWeatherByLocation({ lat: 38, lng: 36 });
-   
-    
   }
 
   setWeather(weather: any) {

@@ -4,7 +4,7 @@
       <button class="reset-btn" (click)="resetPost()">X</button>
         <div class="post">
           <p>{{ post.txt }}</p>
-         <app-user-preview [owner]="post.owner"/>
+         <app-user-preview [owner]="post.owner" />
           <p>Posted on: {{ post.createdAt | date:'medium' }}</p>
           <p>Last Updated: {{ post.updatedAt | date:'medium' }}</p>
       
