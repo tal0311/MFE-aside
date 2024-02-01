@@ -16,6 +16,8 @@ export class PostDetailsComponent {
   @Input() post: any | null = null;
   @Output() closePost = new EventEmitter<any>();
 
+
+
   resetPost() {
     console.log('resetPost');
     this.closePost.emit(null);
