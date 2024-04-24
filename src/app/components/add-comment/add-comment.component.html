@@ -1,1 +1,19 @@
-<p>add-comment works!</p>
+<section class="add-comment">
+  <h3>Add Comment</h3>
+  <form (submit)="addComment($event)">
+    <input
+      type="text"
+      placeholder="Comment"
+      [value]="comment.txt"
+      name="txt"
+    />
+    <button >Add</button>
+  </form>
+</section>
+
+<style>
+    .add-comment{
+        background-color: brown;
+    }
+</style>
+

@@ -2,7 +2,7 @@
 
     <section >
       <button class="reset-btn" (click)="resetPost()">X</button>
-        <div class="post">
+        <div class="post-details">
           <p>{{ post.txt }}</p>
          <app-user-preview [owner]="post.owner" />
           <p>Posted on: {{ post.createdAt | date:'medium' }}</p>
@@ -26,8 +26,14 @@
               <button>Add</button>
             </form>
           </div> -->
+
         </div>
+      
       </section>
+
+      <style>
+
+      </style>
 
      
       

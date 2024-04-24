@@ -8,7 +8,7 @@ import { CommentListComponent } from '../comment-list/comment-list.component';
 @Component({
   selector: 'app-post-details',
   standalone: true,
-  imports: [JsonPipe, DatePipe, NgFor, NgIf, IconComponent,UserPreviewComponent, CommonModule,CommentListComponent],
+  imports: [JsonPipe, DatePipe, NgFor, NgIf, IconComponent,UserPreviewComponent,  CommonModule,CommentListComponent],
   templateUrl: './post-details.component.html',
   styleUrl: './post-details.component.scss',
 })

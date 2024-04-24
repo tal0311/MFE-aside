@@ -2,6 +2,7 @@ import { Component, OnInit, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { PostDetailsComponent } from './components/post-details/post-details.component';
 import { WeatherComponent } from './components/weather/weather.component';
+import { AddCommentComponent } from './components/add-comment/add-comment.component';
 import { NgIf } from '@angular/common';
 import { postService } from './services/post.service';
 import { environment } from '../environments/environment';
@@ -9,7 +10,7 @@ import { environment } from '../environments/environment';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, PostDetailsComponent, WeatherComponent, NgIf],
+  imports: [RouterOutlet, PostDetailsComponent, WeatherComponent, NgIf, AddCommentComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
@@ -17,13 +18,20 @@ export class AppComponent implements OnInit {
   title = 'aside-fe';
 
   postForDisplay_ = signal<any>(null);
+  loggedUser_ = signal<any>(null);
   weather_ = signal<any>(null);
 
   ngOnInit(): void {
-    this.getPostFromLocalStorage();
+    // this.getPostFromLocalStorage();
     window.addEventListener('message', (e) => {
       if (e.data.type === 'display_post') {
-        this.setPostForDisplay(e.data.payload);
+        console.log(e.data);
+       
+        console.log('post details', e.data);
+        
+        // this.setPostForDisplay(e.data.payload);
+        // this.setUser(e.data.payload.user);
+
       }
 
       if (e.data.type === 'display_weather') {
@@ -41,6 +49,10 @@ export class AppComponent implements OnInit {
     this.postForDisplay_.set(post);
     postService.saveToLocalStorage('current-post', this.postForDisplay_());
   }
+  setUser(user: any) {
+    this.loggedUser_.set(user);
+    postService.saveToLocalStorage('logged-user', this.loggedUser_());
+  }
 
   getPostFromLocalStorage() {
     const post = postService.getFromLocalStorage('current-post');
@@ -50,7 +62,7 @@ export class AppComponent implements OnInit {
   }
 
   updatePost(comment: any) {
-    this.postForDisplay_.update((post) => post.comments.push(post));
+    this.postForDisplay_.update((post) => post.comments.push(comment));
     postService.saveToLocalStorage('current-post', this.postForDisplay_());
     // this.updateParentPost(this.postForDisplay_());
   }
@@ -62,6 +74,13 @@ export class AppComponent implements OnInit {
   resetPost() {
     this.postForDisplay_.set(null);
     postService.saveToLocalStorage('current-post', this.postForDisplay_());
+  }
+
+  addComment(comment:any){
+    console.log(comment);
+    // this.updatePost(comment)
+    
+
   }
 }
 

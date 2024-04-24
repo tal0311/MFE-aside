@@ -1,18 +1,26 @@
-
-
 <main class="main">
-  <app-post-details *ngIf="postForDisplay_(); else weatherSection" [post]="postForDisplay_()" (closePost)="resetPost()"/>
+  <ng-container *ngIf="postForDisplay_(); else weatherSection">
+    <section class="post-section">
+      <app-post-details [post]="postForDisplay_()" (closePost)="resetPost()" />
+      <app-add-comment (addCommentToPost)="addComment($event)" />
+    </section>
+  </ng-container>
+
   <ng-template #weatherSection>
-    <app-weather [weather]="weather_()"/>
-  </ng-template> 
+    <app-weather [weather]="weather_()" />
+  </ng-template>
 </main>
 
-
 <style>
-main {
- 
-  height: 100vh;
-}
+  main {
+    height: 100vh;
+    background-color: bisque;
+  }
+  .post-section {
+   display: grid;
+   grid-template-rows: 1fr 50px;
+   background-color: aquamarine;
+  }
 </style>
 
 <router-outlet />
